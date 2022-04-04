@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap');
+
+
+:root {
+  --placeholder-color: hsl(0, 0%, 60%);
+  --light-mode-background: hsl(0, 20%, 97%);
+  --light-mode-header-card-background: hsl(136, 0%, 100%);
+  --dark-mode-background: hsl(209, 17%, 24%);
+  --dark-mode-header-card-background: hsl(209, 12%, 34%);
+  --box-shadow-header: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  --very-basic-margin-padding: 0.5rem 1rem;
+  --border-radius: 5px;
+
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  font-family: 'Nunito Sans';
+  background-color: var(--light-mode-background);
+  font-weight: 300;
+}
+
+
+/**Toggle dark or light mode**/
+.dark-mode-header-card {
+  background-color: var(--dark-mode-header-card-background);
+  color: var(--light-mode-background);
+
+}
+
+.dark-mode-gen {
+  background-color: var(--dark-mode-background);
+}
+
+
+
+/**Header (Title and Light or Dark Mode Toggle Button)**/
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  box-shadow: var(--box-shadow-header);
+}
+
+h1 {
+  font-size: clamp(1rem, 0.2500rem + 3.3333vw, 1.5rem);
+}
+
+button, button:focus {
+  text-decoration: none;
+  outline: none;
+  background: transparent;
+  border: 1px transparent;
+ 
+}
+
+.sun-moon-icon i {
+  padding-right: 0.5rem;
+}
+
+
+/**Search a country input field**/
+
+input {
+  padding: 0.5rem 3rem;
+  color: var(--placeholder-color);
+  box-sizing: border-box;
+  width: 304px; /* I used fixed px width to make both input search field and filters container have the same width */
+}
+
+input[type=text] {
+  border: 2px transparent var(--placeholder-color);
+  border-radius: var(--border-radius);
+  box-shadow: inset 0 0 2px;
+  padding: 0.5rem 3rem;
+
+
+}
+
+input:focus {
+  color: black;
+}
+
+input::placeholder {
+  color: var(--placeholder-color);
+
+}
+
+.search-tab {
+  position: relative;
+ 
+}
+
+.search-tab i {
+  position: absolute;
+  margin:  var(--very-basic-margin-padding);
+  color: gray;
+  
+}
+
+
+
+/**Filters by region and graph**/
+
+select {
+  border: none;
+  outline: 0px;
+  box-shadow: inset 0 0 2px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 3rem;
+  border-radius: var(--border-radius);
+  color: var(--placeholder-color);
+  -moz-appearance: none; /* Firefox */
+  -webkit-appearance: none; /* Safari and Chrome */
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+ 
+ 
+}
+
+ option:checked {
+  color: black;
+}
+
+
+#filter-by-region,
+.see-graph-by-population-or-language {
+  position: relative;
+ 
+}
+
+
+#filter-by-region::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0d7";
+  font-size: 0.75rem;
+  position: absolute;
+  top: 0.5rem;
+  margin-left: -1.5rem;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 900;
+  pointer-events: none; /**allows clicking select showing dropdown on this area, w/o this, fontawesome is not clickable**/
+  color: gray;
+
+}
+
+/* 
+ .filters-container {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 304px; /* I used fixed unit px  to make both input search field and filters container have the same width 
+} 
+*/
+
+
+.search-and-filters-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin-top: 2rem;
+  place-items: center stretch;
+  gap: 0.5rem;
+}
+
+
+/*loader while APIs/Cards are being fetched**/
+
+.loader {
+  background: hsla(0, 11%, 78%, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.loader img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+
+/** Cards container and its children**/
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.5rem;
+  justify-content: center;
+  margin-top: 4rem;
+  
+}
+
+.country-card {
+  width: 250px;
+  background-color: var(--light-mode-header-card-background);
+  box-shadow: var(--box-shadow-header);
+  border-radius: var(--border-radius);
+
+}
+
+.country-flag-image img{
+  width: 250px;
+  object-fit: cover;
+  height: 160px;
+  box-shadow:  var(--box-shadow-header);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+}
+
+.country-basic-info {
+  padding: var(--very-basic-margin-padding);
+  line-height: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.inner-text-category {
+  font-weight: 600;
+}
+
+.country-name, .modal-country-name {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.5rem;
+}
+
+
+
+
+/**Modal for country detailed info**/
+.modal-country-detailed-info-container {
+  display: none;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+ /* background-color: var(--light-mode-background);*/
+  margin-top: 2rem;
+}
+
+
+
+.back-button {
+  margin: var(--very-basic-margin-padding);
+  background-color: var(--light-mode-header-card-background);
+  border-style: solid;
+  border-color: blue;
+  padding: var(--very-basic-margin-padding);
+  border-radius: var(--border-radius);
+  color: blue
+}
+
+.back-button:hover {
+  background-color: blue;
+  color: white;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
+}
+
+.modal-country-card-detailed-info-div {
+  max-width: 90%;
+  position: relative;
+  background-color: var(--light-mode-header-card-background);
+  box-shadow: var(--box-shadow-header);
+  border-radius: var(--border-radius);
+  margin-top: 5rem;
+  
+}
+
+.modal-country-flag {
+  position: absolute;
+  
+}
+.modal-country-flag img{
+  width: 125px;
+  box-shadow:  var(--box-shadow-header);
+  margin-top: -3rem;
+  border-radius: var(--border-radius);
+  
+}
+
+.modal-country-detailed-info {
+  padding-top: 3rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.wikipedia-summary {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+
+}
+
+.modal-text-wiki {
+  font-size: 15px;
+}
+
+.modal-card-photos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+}
+
+.country-unsplash-photos {
+  display: grid;
+}
+
+
+a img {
+  max-width: 90vw;
+  height: auto;
+}
+
+
+
+/**Footer**/
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 5rem;
+  font-weight: 400;
+  margin-bottom: -1rem;
+  padding: 1px;
+
+
+}
+
+
+
+/**Media Queries**/
+
+@media (min-width: 600px) {
+
+
+  .modal-text-wiki {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+ 
+  }
+
+  .wikipedia-summary {
+    padding-top: 5.5rem;
+    line-height: 1.5;
+  }
+
+  a img {
+   width: 300px;
+   height: 300px;
+   object-fit: cover;
+  }
+
+  .country-unsplash-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
+    gap: 5px;
+
+  }
+
+}
+
+@media (min-width: 800px) {
+
+  .search-and-filters-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .modal-card-photos-container {
+    display: grid;
+  }
+
+  .modal-country-card-detailed-info-div {
+    width: 600px;
+    justify-self: center;
+  }
+
+  .back-button {
+    margin-left: 3rem;
+  }
+
+  .country-unsplash-photos {
+    grid-template-columns: 1fr 1fr 1fr;
+ 
+
+  }
+
+}
+
+@media (min-width: 1100px) {
+
+  .search-and-filters-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+  }
+
+  #header {
+   padding: 0.10rem 3rem;
+  }
+
+
+}

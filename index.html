@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini World App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  </head>
+  
+  <body>
+    <!--HEADER-->
+    <header id = "header">
+      <div class="header-title">
+        <h1>Where do you want to go?</h1>
+      </div>
+      <button class="light-dark-mode-btn" id= "light-dark-mode-btn">
+        <span class = "sun-moon-icon"><i class="fas fa-moon"></i>Dark Mode</span>
+      </button>
+    </header>
+    
+    
+       <!--MODAL CONTAINER FOR HOLDING DETAILED COUNTRY INFO-->
+       <div class="modal-country-detailed-info-container" id="modal-country-detailed-info-container">
+        <button class="back-button" id="back-button">
+          <i class="fas fa-arrow-left"></i>Back</button>
+        <div class="modal-card-photos-container">
+          <div class="modal-country-card-detailed-info-div">
+            <div class="modal-country-flag"></div>
+            <div class = "modal-text-wiki">
+              <div class="modal-country-detailed-info">
+                <p class="modal-country-name"></p>
+                <p class="modal-population"></p>
+                <p class="modal-sub-region"></p>
+                <p class="modal-capital"></p>
+                <p class="modal-domain"></p>
+                <p class="modal-currency"></p>
+                <p class="modal-languages"></p>
+             </div>
+             <p class="wikipedia-summary"></p>
+            </div>
+          </div>
+          <div class="country-unsplash-photos"></div>
+      </div>
+      </div>
+
+    <main class="main-content">
+      <!--SEARCH AND FILTERS-->
+      <div class="search-and-filters-container">
+
+        <!--SEARCH TAB-->
+        <div class = "search-tab">
+          <i class="fas fa-search"></i>
+          <label for="search-a-country"></label>
+          <input id="search-a-country" type="text" placeholder="Search a country" name="country">
+        </div>
+
+        <!--FILTERS-->
+       <!--<div class="filters-container">-->
+
+          <!--Filter Region-->
+          <div id="filter-by-region">
+            <label for="filtered-region"></label>
+            <select name="filtered by region" id="filtered-region">
+              <option value="">Filter by region</option>
+              <option value="Africa" id="africa">Africa</option>
+              <option value="America" id="america">America</option>
+              <option value="Asia" id="asia">Asia</option>
+              <option value="Europe" id="europe">Europe</option>
+              <option value="Oceania" id="oceania">Oceania</option>
+            </select>
+          </div>
+
+         <!--See graphs-->
+         <!-- 
+          <div class="see-graph-by-population-or-language">
+            <label for="filtered-graph"></label>
+            <select name="see the graph" id="filtered-graph">
+              <option value="none">See graph by</option>
+              <option value="population">Population</option>
+              <option value="language">Language</option>
+            </select>
+          </div> -->
+    
+      </div>
+
+      <div class= "loader" id="loader">
+        <img src="three-dots.svg" alt="loading">
+      </div>
+            
+
+      <!--CARDS CONTAINER-->
+      <div class ="cards-container" id ="cards-container">
+      </div>
+         
+     
+
+    </main>
+    <footer class = 'footer-style'>
+      <p>Designed and developed by RC Bahan 2022</p>
+    </footer>
+    <script src="script.js"></script>
+  
+  </body>
+
+</html>
