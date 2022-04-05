@@ -6,9 +6,6 @@ const mainContent = document.querySelector('.main-content')
 let ready = false;
 let cardsloaded = 0;
 let totalCards = 0;
-// Set the footer hidden while REST country API is still being fetched
-let footer = document.querySelector('.footer-style');
-    footer.style.visibility = 'hidden';
 let countriesArray = [];
 
 
@@ -38,7 +35,6 @@ let countriesArray = [];
     if (cardsloaded === totalCards) {
       ready = true;
       loader.hidden = true;
-      footer.style.visibility = 'visible';
     }
   }
 
@@ -203,7 +199,6 @@ darkLigtMode.addEventListener('click', () => {
   body.classList.toggle('dark-mode-gen');
   headerDark.classList.toggle('dark-mode-header-card');
   darkLigtMode.classList.toggle('dark-mode-header-card');
-  footer.classList.toggle('dark-mode-header-card')
 
 })
 

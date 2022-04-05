@@ -19,20 +19,19 @@ body {
   font-family: 'Nunito Sans';
   background-color: var(--light-mode-background);
   font-weight: 300;
+ 
 }
 
 
-/**Toggle dark or light mode**/
+/**Toggle dark or light mode styling**/
 .dark-mode-header-card {
   background-color: var(--dark-mode-header-card-background);
   color: var(--light-mode-background);
-
 }
 
 .dark-mode-gen {
   background-color: var(--dark-mode-background);
 }
-
 
 
 /**Header (Title and Light or Dark Mode Toggle Button)**/
@@ -76,7 +75,6 @@ input[type=text] {
   box-shadow: inset 0 0 2px;
   padding: 0.5rem 3rem;
 
-
 }
 
 input:focus {
@@ -90,7 +88,6 @@ input::placeholder {
 
 .search-tab {
   position: relative;
- 
 }
 
 .search-tab i {
@@ -102,7 +99,7 @@ input::placeholder {
 
 
 
-/**Filters by region and graph**/
+/**Filters by region**/
 
 select {
   border: none;
@@ -197,7 +194,7 @@ select {
   gap: 3.5rem;
   justify-content: center;
   margin-top: 4rem;
-  
+  padding-bottom: 4rem;
 }
 
 .country-card {
@@ -242,8 +239,10 @@ select {
   z-index: 10;
   height: 100%;
   width: 100%;
- /* background-color: var(--light-mode-background);*/
-  margin-top: 2rem;
+  position: fixed;
+  overflow: auto;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
 }
 
 
@@ -315,6 +314,7 @@ select {
 
 .country-unsplash-photos {
   display: grid;
+  margin-top: 1em;
 }
 
 
@@ -324,19 +324,6 @@ a img {
 }
 
 
-
-/**Footer**/
-
-footer {
-  text-align: center;
-  font-size: 12px;
-  margin-top: 5rem;
-  font-weight: 400;
-  margin-bottom: -1rem;
-  padding: 1px;
-
-
-}
 
 
 
@@ -366,7 +353,8 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: stretch;
-    gap: 5px;
+    grid-gap: 1em;
+  
 
   }
 
@@ -396,6 +384,7 @@ footer {
 
   .country-unsplash-photos {
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1em;
  
 
   }
