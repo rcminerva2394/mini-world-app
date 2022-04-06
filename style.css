@@ -315,6 +315,7 @@ select {
 .country-unsplash-photos {
   display: grid;
   margin-top: 1em;
+  grid-gap: 1em;
 }
 
 
